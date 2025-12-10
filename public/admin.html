@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - HR Website</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <script src="admin-check.js"></script>
+</head>
+<body>
+  <!-- Loading screen while checking authentication -->
+  <div id="auth-loading" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1a1a1a; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+    <div style="color: #ffd700; font-size: 1.5rem;">Checking authentication...</div>
+  </div>
+
+  <div id="admin-content" style="display: none;">
+    <header>
+      <h1>Admin Panel</h1>
+      <a href="index.html" class="back-link">← Back to Site</a>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </header>
+
+  <main>
+    <section class="form-section">
+      <h2 id="form-title">Add New Job Poster</h2>
+      <form id="poster-form">
+        <input type="hidden" id="poster-id">
+        
+        <div class="form-group">
+          <label for="banner">Banner Image</label>
+          <input type="file" id="banner" accept="image/*">
+          <div id="banner-preview"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Job Title (English) *</label>
+          <input type="text" id="title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="titleKh">Job Title (Khmer)</label>
+          <input type="text" id="titleKh">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description (English) *</label>
+          <textarea id="description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="descriptionKh">Description (Khmer)</label>
+          <textarea id="descriptionKh" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="applyButtonText">Apply Button Text (English)</label>
+          <input type="text" id="applyButtonText" placeholder="Apply Now">
+        </div>
+
+        <div class="form-group">
+          <label for="applyButtonTextKh">Apply Button Text (Khmer)</label>
+          <input type="text" id="applyButtonTextKh" placeholder="ដាក់ពាក្យ">
+        </div>
+
+        <div class="form-group">
+          <label for="applyLink">Apply Link (URL)</label>
+          <input type="url" id="applyLink" placeholder="https://example.com/apply">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+1234567890">
+        </div>
+
+        <div class="form-group">
+          <label for="telegram">Telegram Link</label>
+          <input type="url" id="telegram" placeholder="https://t.me/username">
+        </div>
+
+        <div class="form-group">
+          <label for="facebook">Facebook Link</label>
+          <input type="url" id="facebook" placeholder="https://facebook.com/page">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="hr@company.com">
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary">Save Poster</button>
+          <button type="button" class="btn btn-secondary" onclick="resetForm()">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="form-section">
+      <h2>Website Settings</h2>
+      <form id="settings-form">
+        <div class="form-group">
+          <label for="language">Display Language</label>
+          <select id="language">
+            <option value="en">English</option>
+            <option value="kh">ភាសាខ្មែរ (Khmer)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="headerText">Header Text (English)</label>
+          <input type="text" id="headerText" placeholder="Job Opportunities">
+        </div>
+
+        <div class="form-group">
+          <label for="headerTextKh">Header Text (Khmer)</label>
+          <input type="text" id="headerTextKh" placeholder="ឱកាសការងារ">
+        </div>
+
+        <div class="form-group">
+          <label for="titleFont">Title Font</label>
+          <select id="titleFont">
+            <option value="Segoe UI">Segoe UI</option>
+            <option value="Arial">Arial</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Khmer OS Battambang">Khmer OS Battambang</option>
+            <option value="Khmer OS Siemreap">Khmer OS Siemreap</option>
+            <option value="Khmer OS Muol Light">Khmer OS Muol Light</option>
+            <option value="Hanuman">Hanuman</option>
+            <option value="Bayon">Bayon</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="descriptionFont">Description Font</label>
+          <select id="descriptionFont">
+            <option value="Segoe UI">Segoe UI</option>
+            <option value="Arial">Arial</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Khmer OS Battambang">Khmer OS Battambang</option>
+            <option value="Khmer OS Siemreap">Khmer OS Siemreap</option>
+            <option value="Khmer OS Muol Light">Khmer OS Muol Light</option>
+            <option value="Hanuman">Hanuman</option>
+            <option value="Bayon">Bayon</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="theme">Website Theme</label>
+          <select id="theme">
+            <option value="golden">🏆 Golden Luxury</option>
+            <option value="blue">💙 Ocean Blue</option>
+            <option value="purple">💜 Royal Purple</option>
+            <option value="green">💚 Forest Green</option>
+            <option value="glass">🔮 Glass Modern</option>
+            <option value="sunset">🌅 Sunset Orange</option>
+            <option value="rose">🌹 Rose Pink</option>
+            <option value="cyber">⚡ Cyber Neon</option>
+            <option value="royal">👑 Royal Gold</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+      </form>
+    </section>
+
+    <section class="posters-list">
+      <h2>Manage Posters</h2>
+      <p style="color: #666; margin-bottom: 15px;">📌 Drag any card to reorder posts. The save button will appear after changes.</p>
+      <button id="save-order-btn" class="save-order-btn">💾 Save New Order</button>
+      <div id="admin-posters-container" class="sortable-container"></div>
+    </section>
+  </main>
+  </div>
+
+  <script src="admin-script-new.js"></script>
+  <script>
+    // Show admin content after authentication check passes
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, checking if authenticated...');
+      
+      // Check if user is authenticated
+      const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+      
+      if (isLoggedIn === 'true') {
+        console.log('User authenticated, showing admin content...');
+        document.getElementById('auth-loading').style.display = 'none';
+        document.getElementById('admin-content').style.display = 'block';
+        
+        // Initialize admin functions
+        if (typeof loadAdminPosters === 'function') {
+          loadAdminPosters();
+        }
+        if (typeof loadSettings === 'function') {
+          loadSettings();
+        }
+      } else {
+        console.log('User not authenticated, should redirect...');
+      }
+    });
+  </script>
+</body>
+</html>

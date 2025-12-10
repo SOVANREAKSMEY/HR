@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+}
+
+.login-box {
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255, 215, 0, 0.3);
+  border: 3px solid transparent;
+  background-image: linear-gradient(145deg, #ffffff, #f8f8f8), linear-gradient(135deg, #ffd700, #d4af37, #aa8c2e);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.login-box h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e, #d4af37, #aa8c2e);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.5));
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #aa8c2e 100%);
+  color: #1a1a1a;
+  border: 2px solid #ffd700;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 215, 0, 0.7);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #d4af37 100%);
+}
+
+.error-message {
+  margin-top: 15px;
+  padding: 12px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
